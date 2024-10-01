@@ -44,6 +44,12 @@ const mappings: MapType = {
         value: val,
       },
     }),
+    image: (val: string) => ({
+      ["i-pX8STDZXfD"]: {
+        type: "image",
+        value: val,
+      },
+    }),
   },
   "image-right": {
     title: (val: string) => ({
@@ -54,6 +60,12 @@ const mappings: MapType = {
     }),
     excerpt: (val: string) => ({
       ["i-JZiYWYXa7J"]: {
+        type: "image",
+        value: val,
+      },
+    }),
+    image: (val: string) => ({
+      ["i-gU3M_iqVaZ"]: {
         type: "image",
         value: val,
       },
