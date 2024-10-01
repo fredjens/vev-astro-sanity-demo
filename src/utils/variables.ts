@@ -39,8 +39,8 @@ const mappings: MapType = {
       },
     }),
     excerpt: (val: string) => ({
-      ["i-JZiYWYXa7J"]: {
-        type: "image",
+      ["t-blN_4tbSKg"]: {
+        type: "text",
         value: val,
       },
     }),
@@ -59,8 +59,8 @@ const mappings: MapType = {
       },
     }),
     excerpt: (val: string) => ({
-      ["i-JZiYWYXa7J"]: {
-        type: "image",
+      ["t-BO6UhgLq6N"]: {
+        type: "text",
         value: val,
       },
     }),
