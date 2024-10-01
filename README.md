@@ -1,4 +1,4 @@
-# Astro Starter Kit: Basics
+# Vev Sanity Astro
 
 ```sh
 npm create astro@latest -- --template basics
