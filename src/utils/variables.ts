@@ -81,7 +81,6 @@ const mapSections = (
   });
 
 export const mapToVariables = (page: SanityPage) => {
-  console.log("before", JSON.stringify(page, null, 2));
-
-  return mapSections(page.sections, mappings);
+  const mapped = mapSections(page?.sections, mappings);
+  return mapped;
 };

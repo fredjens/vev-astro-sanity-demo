@@ -1,0 +1,48 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { createClient } from "@sanity/client";
+import VevEmbed from "../components/VevEmbed.tsx";
+import { mapToVariables } from "../utils/variables.ts";
+
+const { id = "" } = Astro.params;
+
+const query = `*[_type == "page" && _id == $id][0] {
+  ...,
+  "sections": sections[]{
+    ...,
+    "image": image.asset -> url,
+  }
+}`;
+
+const config = {
+  projectId: "sp8ouolu",
+  dataset: "production",
+  token: import.meta.env.SANITY_API_TOKEN,
+  useCdn: false,
+};
+
+const sanityClient = createClient(config);
+const sanityData = await sanityClient.fetch(query, { id: id });
+const data = mapToVariables(sanityData);
+---
+
+<Layout title="Vev Sanity Astro">
+  <main>
+    {
+      data.map((d, i) => (
+        <VevEmbed
+          id={d.id}
+          component={d.component}
+          variables={d.variables}
+          client:load
+        />
+      ))
+    }
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+  }
+</style>

@@ -1,34 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { sanityClient } from "sanity:client";
 import VevEmbed from "../components/VevEmbed.tsx";
-import { mapToVariables } from "../utils/variables.ts";
-
-const data: any[] = mapToVariables(
-  await sanityClient.fetch(`*[_type == "page"][0]{
-  ...,
-  "sections": sections[]{
-    ...,
-    "image": image.asset -> url,
-  }
-}`)
-);
-console.log("after", JSON.stringify(data, null, 2));
 ---
 
 <Layout title="Vev Sanity Astro">
-  <main>
-    {
-      data.map((d, i) => (
-        <VevEmbed
-          id={d.id}
-          component={d.component}
-          variables={d.variables}
-          client:load
-        />
-      ))
-    }
-  </main>
+  <h1>Vev * Sanity * Astro</h1>
+  <p>Go to <code>/sanity-id</code></p>
+  <VevEmbed id="block" component="hero" />
 </Layout>
 
 <style>
