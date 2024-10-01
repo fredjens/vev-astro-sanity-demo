@@ -11,7 +11,7 @@ type MapType = Record<
 >;
 
 const mappings: MapType = {
-  p8S9MxkirVE: {
+  hero: {
     title: (val: string) => ({
       ["t-4RyfGtGYj2"]: {
         type: "text",
@@ -31,7 +31,7 @@ const mappings: MapType = {
       },
     }),
   },
-  pTgo0BxhLWp: {
+  "image-left": {
     title: (val: string) => ({
       ["t-4RyfGtGYj2"]: {
         type: "text",
@@ -45,7 +45,7 @@ const mappings: MapType = {
       },
     }),
   },
-  poszfFeLg7f: {
+  "image-right": {
     title: (val: string) => ({
       ["t-4RyfGtGYj2"]: {
         type: "text",

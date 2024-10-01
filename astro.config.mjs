@@ -13,7 +13,7 @@ export default defineConfig({
       dataset: "production",
       apiVersion: "2021-03-25",
       useCdn: false,
-      studioBasePath: "/admin",
+      studioBasePath: "/studio",
     }),
   ],
 });
