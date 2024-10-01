@@ -9,9 +9,8 @@ type Props = {
 const VevEmbed = ({ id, component, variables = {} }: Props) => {
   useEffect(() => {
     const url = `https://qwiker-test.vev.design/p/${component}/embed.js`;
-    // @ts-ignore
+    /* @vite-ignore */
     import(url).then(({ init }) => {
-      console.log("component", component);
       init({
         target: id,
         vars: variables,

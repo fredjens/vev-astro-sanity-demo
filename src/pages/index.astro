@@ -1,57 +1,38 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import VevEmbed from '../components/VevEmbed.tsx';
+import Layout from "../layouts/Layout.astro";
+import { sanityClient } from "sanity:client";
+import VevEmbed from "../components/VevEmbed.tsx";
+import { mapToVariables } from "../utils/variables.ts";
 
-const data = [{
-	component: "6A5lyRJAZs",
-	vars: {
-          "t-4RyfGtGYj2": {
-            type: "text",
-            value: "One",
-          },
-          "t-hd1jsFgPV5": {
-            type: "text",
-            value: "This is the first subtitle.",
-          },
-          "i-JZiYWYXa7J": {
-            type: "image",
-            value: "https://picsum.photos/id/12/1200/900",
-          },
-        }
-	},{
-	component: "6A5lyRJAZs",
-	vars: {
-		"t-4RyfGtGYj2": {
-            type: "text",
-            value: "Two",
-          },
-          "t-hd1jsFgPV5": {
-            type: "text",
-            value: "This is the second subtitle.",
-          },
-          "i-JZiYWYXa7J": {
-            type: "image",
-            value: "https://picsum.photos/id/13/1200/900",
-          },
-	}}];
+const data: any[] = mapToVariables(
+  await sanityClient.fetch(`*[_type == "page"][0]{
+  ...,
+  "sections": sections[]{
+    ...,
+    "image": image.asset -> url,
+  }
+}`)
+);
+console.log("after", JSON.stringify(data, null, 2));
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		{data.map((d, i) => (
-			<VevEmbed 
-				id={`${d.component}_${i}`} 
-				component={d.component}
-				variables={d.vars}
-				client:load 
-			/>
-))}
-	</main>
+<Layout title="Vev Sanity Astro">
+  <main>
+    {
+      data.map((d, i) => (
+        <VevEmbed
+          id={d.id}
+          component={d.component}
+          variables={d.variables}
+          client:load
+        />
+      ))
+    }
+  </main>
 </Layout>
 
-
 <style>
-	main {
-		margin: auto;
-	}
+  main {
+    margin: auto;
+  }
 </style>
