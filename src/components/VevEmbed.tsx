@@ -8,7 +8,7 @@ type Props = {
 
 const VevEmbed = ({ id, component, variables = {} }: Props) => {
   useEffect(() => {
-    const url = `https://qwiker-test.vev.design/p/6A5lyRJAZs${component}/embed.js`;
+    const url = `https://qwiker-test.vev.design/p/6A5lyRJAZs/${component}/embed.js`;
     /* @vite-ignore */
     // @ts-ignore
     import(url).then(({ init }) => {
