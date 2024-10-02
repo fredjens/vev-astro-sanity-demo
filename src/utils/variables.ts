@@ -33,7 +33,7 @@ const mappings: MapType = {
   },
   "image-left": {
     title: (val: string) => ({
-      ["t-4RyfGtGYj2"]: {
+      ["t-Y39-o47gOz"]: {
         type: "text",
         value: val,
       },
@@ -45,7 +45,7 @@ const mappings: MapType = {
       },
     }),
     image: (val: string) => ({
-      ["i-pX8STDZXfD"]: {
+      ["i-gU3M_iqVaZ"]: {
         type: "image",
         value: val,
       },
@@ -53,7 +53,7 @@ const mappings: MapType = {
   },
   "image-right": {
     title: (val: string) => ({
-      ["t-4RyfGtGYj2"]: {
+      ["t-ZtEL6BClv1"]: {
         type: "text",
         value: val,
       },
