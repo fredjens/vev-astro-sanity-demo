@@ -5,11 +5,16 @@ type SanityPage = {
   sections: SanitySection[];
 };
 
+type SanityImage = {
+  url: string;
+  alt: string;
+};
+
 type SanitySection = Record<string, string>;
 
 type MapType = Record<
   string,
-  Record<string, (val: string) => Record<string, any>>
+  Record<string, (val: any) => Record<string, any>>
 >;
 
 const mappings: MapType = {
@@ -26,7 +31,7 @@ const mappings: MapType = {
         value: val,
       },
     }),
-    image: (val: string) => ({
+    image: (val: SanityImage) => ({
       ["i-JZiYWYXa7J"]: {
         type: "image",
         value: createImage(val),
@@ -46,7 +51,7 @@ const mappings: MapType = {
         value: val,
       },
     }),
-    image: (val: string) => ({
+    image: (val: SanityImage) => ({
       ["i-gU3M_iqVaZ"]: {
         type: "image",
         value: createImage(val),
@@ -66,7 +71,7 @@ const mappings: MapType = {
         value: val,
       },
     }),
-    image: (val: string) => ({
+    image: (val: SanityImage) => ({
       ["i-gU3M_iqVaZ"]: {
         type: "image",
         value: createImage(val),
@@ -75,11 +80,14 @@ const mappings: MapType = {
   },
 };
 
-const createImage = (val: string) => {
+const createImage = ({ url, alt }: SanityImage) => {
   return {
-    src: val,
+    src: url,
+    meta: {
+      description: alt,
+    },
     srcset: [600, 800, 900, 1000, 1200, 1300, 2200].map((size) => [
-      sanityImage.image(val).width(size).quality(60).format("webp").url(),
+      sanityImage.image(url).width(size).quality(60).format("webp").url(),
       size,
     ]),
   };
@@ -105,5 +113,6 @@ const mapSections = (
   });
 
 export const mapToVariables = (page: SanityPage) => {
+  console.log(JSON.stringify(page, null, 2));
   return mapSections(page?.sections, mappings);
 };

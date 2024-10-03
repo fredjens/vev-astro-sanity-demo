@@ -9,7 +9,10 @@ const query = `*[_type == "page" && _id == $id][0] {
   ...,
   "sections": sections[]{
     ...,
-    "image": image.asset -> url,
+    "image": {
+      "url": image.asset -> url,
+      "alt": image.alt
+    },
   }
 }`;
 
