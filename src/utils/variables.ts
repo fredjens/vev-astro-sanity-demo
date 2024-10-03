@@ -1,5 +1,4 @@
-import { sanityImage } from "./sanity";
-import blocksToHtml from "@sanity/block-content-to-html";
+import { sanityImage, sanityBlockToHtml } from "./sanity";
 
 type SanityPage = {
   _key: string;
@@ -89,7 +88,7 @@ const mappings: MapType = {
     text: (val: string) => ({
       ["t-hwRbSuZX71"]: {
         type: "text",
-        value: blocksToHtml({ blocks: val }),
+        value: sanityBlockToHtml(val),
       },
     }),
   },
