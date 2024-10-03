@@ -128,6 +128,10 @@ export default {
           type: "object",
           fields: [
             {
+              name: "title",
+              type: "string",
+            },
+            {
               name: "text",
               type: "array",
               of: [{ type: "block" }],

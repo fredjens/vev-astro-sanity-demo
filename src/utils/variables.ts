@@ -1,4 +1,5 @@
 import { sanityImage } from "./sanity";
+import blocksToHtml from "@sanity/block-content-to-html";
 
 type SanityPage = {
   _key: string;
@@ -75,6 +76,20 @@ const mappings: MapType = {
       ["i-gU3M_iqVaZ"]: {
         type: "image",
         value: createImage(val),
+      },
+    }),
+  },
+  "rich-text": {
+    title: (val: string) => ({
+      ["t-u3bN5pn-37"]: {
+        type: "text",
+        value: val,
+      },
+    }),
+    text: (val: string) => ({
+      ["t-hwRbSuZX71"]: {
+        type: "text",
+        value: blocksToHtml({ blocks: val }),
       },
     }),
   },
