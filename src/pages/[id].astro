@@ -25,7 +25,7 @@ const data = mapToVariables(sanityData);
       <>
         <div id={d.id}></div>
         <script type="module" is:inline define:vars={{ data: d }}>
-          const url = `https://qwiker-test.vev.design/p/6A5lyRJAZs/${data.component}/embed.js`;
+          const url = `/vev/${data.component}/embed.js`;
           const { init } = await import(url);
           init({
             target: data.id,
