@@ -8,7 +8,7 @@ async function getPreviewUrl(doc: SanityDocument) {
   const url = slug
     ? `${window.location.origin}/${slug}?timestamp=${Date.now()}`
     : `${window.location.origin}`;
-  return await debounce(500)(url);
+  return await debounce(1000)(url);
 }
 
 export const defaultDocumentNode: DefaultDocumentNodeResolver = (
