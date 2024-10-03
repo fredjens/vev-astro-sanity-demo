@@ -27,15 +27,14 @@ const data = mapToVariables(sanityData);
       data.map((d, i) => (
       <>
         <section id={d.id}></section>
-        <script type="module" is:inline define:vars={{ data: d, i }}>
-          setTimeout(async () => {
-            const url = `/vev/${data.component}/embed.js`;
-            const { init } = await import(url);
-            init({
-              target: data.id,
-              vars: data.variables,
-            });
-          }, 200 * i);
+        <script type="module" is:inline define:vars={{ data: d }}>
+          const url = `/vev/${data.component}/embed.js`;
+          const { init } = await import(url);
+
+          init({
+            target: data.id,
+            vars: data.variables,
+          });
         </script>
       </>
       ))
