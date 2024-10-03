@@ -79,7 +79,7 @@ const createImage = (val: string) => {
   return {
     src: val,
     srcset: [640, 960, 1280, 2560].map((size) => [
-      sanityImage.image(val).width(size).quality(60).url(),
+      sanityImage.image(val).width(size).quality(60).format("webp").url(),
       size,
     ]),
   };
