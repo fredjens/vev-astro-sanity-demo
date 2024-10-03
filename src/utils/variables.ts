@@ -86,8 +86,8 @@ const createImage = ({ url, alt }: SanityImage) => {
     meta: {
       description: alt,
     },
-    srcset: [600, 800, 900, 1000, 1200, 1300, 2200].map((size) => [
-      sanityImage.image(url).width(size).quality(60).format("webp").url(),
+    srcset: [600, 750, 800, 900, 1000, 1200, 1300, 2200].map((size) => [
+      sanityImage.image(url).width(size).quality(50).format("webp").url(),
       size,
     ]),
   };
@@ -113,6 +113,5 @@ const mapSections = (
   });
 
 export const mapToVariables = (page: SanityPage) => {
-  console.log(JSON.stringify(page, null, 2));
   return mapSections(page?.sections, mappings);
 };
