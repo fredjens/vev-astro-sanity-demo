@@ -86,8 +86,8 @@ const createImage = ({ url, alt }: SanityImage) => {
     meta: {
       description: alt,
     },
-    srcset: [600, 750, 800, 900, 1000, 1200, 1300, 2200].map((size) => [
-      sanityImage.image(url).width(size).quality(50).format("webp").url(),
+    srcset: [480, 640, 730, 820, 960, 1080, 1300, 2400].map((size) => [
+      sanityImage.image(url).width(size).quality(80).format("webp").url(),
       size,
     ]),
   };
