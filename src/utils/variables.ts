@@ -78,7 +78,7 @@ const mappings: MapType = {
 const createImage = (val: string) => {
   return {
     src: val,
-    srcset: [640, 960, 1280, 2560].map((size) => [
+    srcset: [600, 800, 900, 1000, 1200, 1300, 2200].map((size) => [
       sanityImage.image(val).width(size).quality(60).format("webp").url(),
       size,
     ]),
