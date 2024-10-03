@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { createClient } from "@sanity/client";
-import VevEmbed from "../components/VevEmbed.tsx";
 import { mapToVariables } from "../utils/variables.ts";
 
 const { id = "" } = Astro.params;
@@ -30,12 +29,16 @@ const data = mapToVariables(sanityData);
   <main>
     {
       data.map((d, i) => (
-        <VevEmbed
-          id={d.id}
-          component={d.component}
-          variables={d.variables}
-          client:load
-        />
+      <>
+        <div id={d.id}></div>
+        <script type="module" is:inline define:vars={{ data: d }}>
+          import { init } from "https://qwiker-test.vev.design/p/6A5lyRJAZs/hero/embed.js";
+          init({
+            target: data.id,
+            vars: data.variables,
+          });
+        </script>
+      </>
       ))
     }
   </main>

@@ -27,7 +27,9 @@ const mappings: MapType = {
     image: (val: string) => ({
       ["i-JZiYWYXa7J"]: {
         type: "image",
-        value: val,
+        value: {
+          src: val,
+        },
       },
     }),
   },
@@ -47,7 +49,9 @@ const mappings: MapType = {
     image: (val: string) => ({
       ["i-gU3M_iqVaZ"]: {
         type: "image",
-        value: val,
+        value: {
+          src: val,
+        },
       },
     }),
   },
@@ -67,7 +71,9 @@ const mappings: MapType = {
     image: (val: string) => ({
       ["i-gU3M_iqVaZ"]: {
         type: "image",
-        value: val,
+        value: {
+          src: val,
+        },
       },
     }),
   },
