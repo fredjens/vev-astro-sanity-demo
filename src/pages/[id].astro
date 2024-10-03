@@ -13,8 +13,8 @@ const query = `*[_type == "page" && _id == $id][0] {
   }
 }`;
 
-
-const sanityData = await sanityClient.fetch(query, { id: id }, { useCdn: id.includes('draft') ? false : true });
+const isProduction = id.includes('draft') ? false : true;
+const sanityData = await sanityClient.fetch(query, { id: id }, { useCdn: isProduction });
 const data = mapToVariables(sanityData);
 ---
 
@@ -23,7 +23,7 @@ const data = mapToVariables(sanityData);
     {
       data.map((d, i) => (
       <>
-        <div id={d.id}></div>
+        <section id={d.id}></section>
         <script type="module" is:inline define:vars={{ data: d }}>
           const url = `/vev/${data.component}/embed.js`;
           const { init } = await import(url);
