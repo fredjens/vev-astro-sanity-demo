@@ -14,7 +14,7 @@ const query = `*[_type == "page" && _id == $id][0] {
 }`;
 
 
-const sanityData = await sanityClient.fetch(query, { id: id });
+const sanityData = await sanityClient.fetch(query, { id: id }, { useCdn: id.includes('draft') ? false : true });
 const data = mapToVariables(sanityData);
 ---
 
