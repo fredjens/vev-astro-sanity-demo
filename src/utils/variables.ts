@@ -1,3 +1,5 @@
+import { sanityImage } from "./sanity";
+
 type SanityPage = {
   _key: string;
   sections: SanitySection[];
@@ -27,9 +29,7 @@ const mappings: MapType = {
     image: (val: string) => ({
       ["i-JZiYWYXa7J"]: {
         type: "image",
-        value: {
-          src: val,
-        },
+        value: createImage(val),
       },
     }),
   },
@@ -49,9 +49,7 @@ const mappings: MapType = {
     image: (val: string) => ({
       ["i-gU3M_iqVaZ"]: {
         type: "image",
-        value: {
-          src: val,
-        },
+        value: createImage(val),
       },
     }),
   },
@@ -71,12 +69,20 @@ const mappings: MapType = {
     image: (val: string) => ({
       ["i-gU3M_iqVaZ"]: {
         type: "image",
-        value: {
-          src: val,
-        },
+        value: createImage(val),
       },
     }),
   },
+};
+
+const createImage = (val: string) => {
+  return {
+    src: val,
+    srcset: [640, 960, 1280, 2560].map((size) => [
+      sanityImage.image(val).width(size).quality(80).url(),
+      size,
+    ]),
+  };
 };
 
 const mapSections = (
@@ -99,6 +105,5 @@ const mapSections = (
   });
 
 export const mapToVariables = (page: SanityPage) => {
-  const mapped = mapSections(page?.sections, mappings);
-  return mapped;
+  return mapSections(page?.sections, mappings);
 };

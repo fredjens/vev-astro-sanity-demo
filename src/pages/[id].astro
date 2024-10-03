@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { createClient } from "@sanity/client";
+import sanityClient from "../utils/sanity.ts";
 import { mapToVariables } from "../utils/variables.ts";
 
 const { id = "" } = Astro.params;
@@ -13,14 +13,7 @@ const query = `*[_type == "page" && _id == $id][0] {
   }
 }`;
 
-const config = {
-  projectId: "sp8ouolu",
-  dataset: "production",
-  token: import.meta.env.SANITY_API_TOKEN,
-  useCdn: false,
-};
 
-const sanityClient = createClient(config);
 const sanityData = await sanityClient.fetch(query, { id: id });
 const data = mapToVariables(sanityData);
 ---
