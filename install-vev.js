@@ -1,19 +1,33 @@
 import fs from "fs";
 
+const project = "6A5lyRJAZs";
 const dist = "public/vev/";
+const isDev = true;
 
 async function downloadVevFiles() {
-  const url = "http://localhost:3000/api/project/6A5lyRJAZs?dev=true";
+  console.log("Start downloading vev files: ", project);
+  const url = `http://localhost:3001/api/project/${project}?dev=${isDev}`;
+  console.log("url", url);
+
   const manifest = await fetch(url).then((res) => res.json());
+  const promises = [];
+
   for (const file of manifest.files) {
-    const res = await fetch(file.url);
-    const blob = await res.blob();
-    const arrayBuffer = await blob.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-    const dir = dist + file.path.substring(0, file.path.lastIndexOf("/"));
-    fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(dist + file.path, buffer);
+    console.log("downloading: ", file.path);
+    const download = new Promise(async (resolve) => {
+      const res = await fetch(file.url);
+      const blob = await res.blob();
+      const arrayBuffer = await blob.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
+      const dir = dist + file.path.substring(0, file.path.lastIndexOf("/"));
+      fs.mkdirSync(dir, { recursive: true });
+      fs.writeFileSync(dist + file.path, buffer);
+      resolve();
+    });
+    promises.push(download);
   }
+
+  await Promise.all(promises);
 }
 
 downloadVevFiles();
