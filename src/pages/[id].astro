@@ -29,7 +29,6 @@ const data = mapToVariables(sanityData);
         <section id={d.id}>
          {JSON.stringify((d as any)?.variables, null, 2)}
         </section>
-        <script>console.log('yo')</script>
         <script type="module" is:inline define:vars={{ data: d, i }}>
           const url = `/vev/${data.component}/embed.js`;
           const { init } = await import(url);
