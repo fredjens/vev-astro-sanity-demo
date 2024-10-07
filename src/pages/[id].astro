@@ -27,12 +27,11 @@ const data = mapToVariables(sanityData);
       data.map((d, i) => (
       <>
         <section id={d.id}>
-         {JSON.stringify((d as any)?.variables, null, 2)}
+          {Object.values(d.variables).filter((v: any) => v.type === 'text').map((d: any) =>(<p>{d.value}</p>))}
         </section>
         <script type="module" is:inline define:vars={{ data: d, i }}>
           const url = `/vev/${data.component}/embed.js`;
           const { init } = await import(url);
-
           init({
               target: data.id,
               vars: data.variables,

@@ -15,7 +15,14 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-  </head><body>
+    <script>
+      document.onreadystatechange = () => {
+        if (document.readyState === "complete") {
+          document.body.style.display = "block";
+        }
+      };
+    </script>
+  </head><body style="display: none;">
     <slot />
   </body>
 </html>
