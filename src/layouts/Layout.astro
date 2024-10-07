@@ -15,6 +15,10 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <link href="/vev/hero/embed.js" rel="modulepreload" />
+    <link href="/vev/image-left/embed.js" rel="modulepreload" />
+    <link href="/vev/image-right/embed.js" rel="modulepreload" />
+    <link href="/vev/rich-text/embed.js" rel="modulepreload" />
   </head><body>
     <slot />
   </body>
