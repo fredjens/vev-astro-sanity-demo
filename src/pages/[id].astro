@@ -31,12 +31,10 @@ const data = mapToVariables(sanityData);
           const url = `/vev/${data.component}/embed.js`;
           const { init } = await import(url);
 
-          setTimeout(() => {
-            init({
-               target: data.id,
-                vars: data.variables,
-             });
-          }, 200 * i);
+          init({
+              target: data.id,
+              vars: data.variables,
+            });
         </script>
       </>
       ))
