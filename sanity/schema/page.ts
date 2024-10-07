@@ -143,6 +143,16 @@ export default {
             },
           ],
         },
+        {
+          name: "video",
+          type: "object",
+          fields: [
+            {
+              name: "youTubeUrl",
+              type: "string",
+            },
+          ],
+        },
       ],
     },
   ],

@@ -92,6 +92,14 @@ const mappings: MapType = {
       },
     }),
   },
+  video: {
+    youTubeUrl: (val: string) => ({
+      ["t-cxyy1_fdB-"]: {
+        type: "text",
+        value: val,
+      },
+    }),
+  },
 };
 
 const createImage = ({ url, alt }: SanityImage) => {
