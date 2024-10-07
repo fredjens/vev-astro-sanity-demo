@@ -1,0 +1,1 @@
+export default {"eCwq4A0JpBt":{"m":[{"key":"eCwq4A0JpBt","content":{"settings":{"lockAspectRatio":true},"children":[],"videoId":"{{t-cxyy1_fdB-}}"},"type":"mWXd9Ap4QJgXImlLXiHP_Youtube","children":[],"cl":"mWXd9Ap4QJgXImlLXiHP"}],"v":{"t-cxyy1_fdB-":{"type":"text","value":"https://www.youtube.com/watch?v=2WxueDKa0g0"}},"c":true}}
