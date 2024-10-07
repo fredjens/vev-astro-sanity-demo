@@ -151,6 +151,11 @@ export default {
               name: "youTubeUrl",
               type: "string",
             },
+            {
+              name: "component",
+              type: "string",
+              initialValue: "video",
+            },
           ],
         },
       ],
