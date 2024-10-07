@@ -92,7 +92,7 @@ const mappings: MapType = {
       },
     }),
   },
-  video: {
+  youtube: {
     youTubeUrl: (val: string) => ({
       ["t-cxyy1_fdB-"]: {
         type: "text",
