@@ -6,7 +6,7 @@ const isDev = true;
 
 async function downloadVevFiles() {
   console.log("Start downloading vev files: ", project);
-  const url = `http://localhost:3001/api/project/${project}?dev=${isDev}`;
+  const url = `http://localhost:3000/api/project/${project}?dev=${isDev}`;
   console.log("url", url);
 
   const manifest = await fetch(url).then((res) => res.json());
