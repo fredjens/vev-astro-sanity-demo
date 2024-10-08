@@ -154,7 +154,7 @@ export default {
             {
               name: "component",
               type: "string",
-              initialValue: "video",
+              initialValue: "youtube",
             },
           ],
         },

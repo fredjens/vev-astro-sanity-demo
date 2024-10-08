@@ -35,13 +35,6 @@ const data = mapToVariables(sanityData);
             is:inline
             set:html={JSON.stringify(d.variables)}
           />
-          <div>
-            {Object.values(d.variables)
-              .filter((d: any) => d.type === "text")
-              .map((d: any) => (
-                <p>{d.value}</p>
-              ))}
-          </div>
         </>
       ))
     }
